@@ -3,65 +3,119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simple Calculator</title>
+  <title>Modern Calculator</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
     body {
+      font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      /* fallback for old browsers */
-      background-color: #667eea;
+      background: linear-gradient(135deg, #667eea, #764ba2);
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0;
     }
+
     .calculator {
-      max-width: 350px;
-      margin: 60px auto;
-      padding: 30px 20px;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      width: 100%;
+      max-width: 360px;
+      padding: 30px 24px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      color: #fff;
     }
-    .calculator input[type="number"], .calculator input[type="text"] {
-      font-size: 1.3rem;
-      text-align: right;
-      margin-bottom: 15px;
-      border-radius: 8px;
+
+    .calculator h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      text-align: center;
     }
-    .btn-calc {
-      width: 70px;
-      height: 50px;
-      font-size: 1.3rem;
-      margin: 5px 2px;
-    }
+
+    .form-control,
     .result-box {
-      font-size: 1.3rem;
-      text-align: right;
-      background: #e9ecef;
+      font-size: 1rem;
+      padding: 10px 14px;
       border-radius: 8px;
-      margin-bottom: 15px;
-      padding: 8px 12px;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
       border: none;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    .btn-calc {
+      flex: 1;
+      margin: 4px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffffff22;
+      color: #fff;
+      transition: 0.3s ease;
+    }
+
+    .btn-calc:hover {
+      background-color: #ffffff44;
+      transform: scale(1.05);
+    }
+
+    .btn-danger {
+      background-color: #ff5e57;
+      border: none;
+      font-weight: 600;
+    }
+
+    .btn-danger:hover {
+      background-color: #ff3b30;
+    }
+
+    .result-box {
+      text-align: right;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 400px) {
+      .btn-calc {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="calculator shadow">
+  <div class="calculator">
     <form onsubmit="return false;">
-      <h1 class="text-center mb-4">Simple Calculator</h1>
-      <input type="number" id="num1" class="form-control mb-2" placeholder="Enter first number" required>
-      <input type="number" id="num2" class="form-control mb-2" placeholder="Enter second number" required>
-      <div class="d-flex justify-content-between mb-3">
-        <button type="button" class="btn btn-primary btn-calc" onclick="sum();">+</button>
-        <button type="button" class="btn btn-primary btn-calc" onclick="sub();">-</button>
-        <button type="button" class="btn btn-primary btn-calc" onclick="mul();">*</button>
-        <button type="button" class="btn btn-primary btn-calc" onclick="div();">/</button>
+      <h1>Simple Calculator</h1>
+      <input type="number" id="num1" class="form-control mb-3" placeholder="Enter first number" required>
+      <input type="number" id="num2" class="form-control mb-3" placeholder="Enter second number" required>
+
+      <div class="d-flex flex-wrap justify-content-between mb-3">
+        <button type="button" class="btn btn-calc" onclick="sum();">+</button>
+        <button type="button" class="btn btn-calc" onclick="sub();">−</button>
+        <button type="button" class="btn btn-calc" onclick="mul();">×</button>
+        <button type="button" class="btn btn-calc" onclick="div();">÷</button>
       </div>
-      <input type="text" id="result" class="result-box w-100 mb-3" placeholder="Result" readonly>
+
+      <input type="text" id="result" class="result-box form-control mb-3" placeholder="Result" readonly>
       <button type="button" class="btn btn-danger w-100" onclick="clearFields();">Clear</button>
     </form>
   </div>
+
   <script src="./script.js"></script>
 </body>
 </html>
